@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "babyboxadmin",
+    "password": "babybox123",
+    "database": "smartbabybox",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "babyboxadmin",
+    "password": "babybox123",
+    "database": "smartbabybox",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "babyboxadmin",
+    "password": "babybox123",
+    "database": "smartbabybox",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
