@@ -54,9 +54,8 @@ module.exports = {
           // console.log(r.rows[i].dataValues.baby)
           if(r.rows[i].dataValues.baby){
               const bornDate = stringToDate(r.rows[i].dataValues.baby.dataValues.born_date);
-              const nowDate = new Date();
-              console.log(bornDate)
-              r.rows[i].dataValues.baby.dataValues["baby_age"] = calculateMonth(bornDate, nowDate);
+              const measurementDate = new Date(r.rows[i].dataValues.createdAt);
+              r.rows[i].dataValues.baby.dataValues["baby_age"] = calculateMonth(bornDate, measurementDate);
             }
           }
 
@@ -96,9 +95,8 @@ module.exports = {
           // console.log(r.rows[i].dataValues.baby)
           if(r.rows[i].dataValues.baby){
               const bornDate = stringToDate(r.rows[i].dataValues.baby.dataValues.born_date);
-              const nowDate = new Date();
-              console.log(bornDate)
-              r.rows[i].dataValues.baby.dataValues["baby_age"] = calculateMonth(bornDate, nowDate);
+              const measurementDate = new Date(r.rows[i].dataValues.createdAt);
+              r.rows[i].dataValues.baby.dataValues["baby_age"] = calculateMonth(bornDate, measurementDate);
             }
           }
 
@@ -114,7 +112,6 @@ module.exports = {
   },
   downloadExcel: async (req, res) => {
     const {babyId} = req.params;
-    console.log(babyId)
     const {limit, offset} = pagination(req.query.currentPage, req.query.limit);
     Measurement.findAndCountAll({
       include: [
@@ -138,9 +135,8 @@ module.exports = {
         for(let i = 0; i<r.rows.length; i++){
           if(r.rows[i].dataValues.baby){
               const bornDate = stringToDate(r.rows[i].dataValues.baby.dataValues.born_date);
-              const nowDate = new Date();
-              console.log(bornDate)
-              r.rows[i].dataValues.baby.dataValues["baby_age"] = calculateMonth(bornDate, nowDate);
+              const measurementDate = new Date(r.rows[i].dataValues.createdAt);
+              r.rows[i].dataValues.baby.dataValues["baby_age"] = calculateMonth(bornDate, measurementDate);
             }
         }
         let dataTableMeasurements = [];
