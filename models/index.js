@@ -4,43 +4,43 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
-const dotenv = require("dotenv");
-dotenv.config();
-// const env = process.env.NODE_ENV || "development";
-// const config = require(__dirname + "/../config/config.json")[env];
+// const dotenv = require("dotenv");
+// dotenv.config();
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/../config/config.json")[env];
 const db = {};
 
 let sequelize;
-// if (config.use_env_variable) {
-//   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-// } else {
-//   sequelize = new Sequelize(config.database, config.username, config.password, config);
-// }
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
 // HEROKU SET UP:
 
-const isProduction = process.env.NODE_ENV === "production";
+// const isProduction = process.env.NODE_ENV === "production";
 
-sequelize = new Sequelize({
-  dialect : 'postgres',
-  username: process.env.PG_USER,
-  password: process.env.PG_PASSWORD,
-  database: process.env.PG_DATABASE,
-  host    : isProduction ? "localhost" : process.env.PG_HOST,
-  dialectOptions: {
-    ssl: isProduction? true : false,
-    rejectUnauthorized: false,
-  },
-});
+// sequelize = new Sequelize({
+//   dialect : 'postgres',
+//   username: process.env.PG_USER,
+//   password: process.env.PG_PASSWORD,
+//   database: process.env.PG_DATABASE,
+//   host    : isProduction ? "localhost" : process.env.PG_HOST,
+//   dialectOptions: {
+//     ssl: isProduction? true : false,
+//     rejectUnauthorized: false,
+//   },
+// });
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection has been established successfully.");
-  })
-  .catch((err) => {
-    console.error("Unable to connect to the database:", err);
-  });
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log("Connection has been established successfully.");
+//   })
+//   .catch((err) => {
+//     console.error("Unable to connect to the database:", err);
+//   });
 
 fs.readdirSync(__dirname)
   .filter((file) => {
