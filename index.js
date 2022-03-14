@@ -19,6 +19,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.use('/', (req, res)=>{res.status(200).send('ok')})
 app.use('/api/v1/measurement', measurementRouter);
 app.use('/api/v1/role', roleRouter);
 app.use('/api/v1/baby', babyRouter);
