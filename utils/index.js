@@ -1,7 +1,6 @@
 module.exports = {
   handlingError: (res, e) => {
-    res.status(401).json({ message: e, status: 401 });
-    console.log(e);
+    res.status(401).send({ data: [], message: e, status: 401 });
   },
 
   pagination: (page, limitData) => {
