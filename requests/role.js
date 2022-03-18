@@ -8,7 +8,7 @@ module.exports = {
             const createRole = await Role.create({role_name});
             res.send({data: createRole, message: 'Role has been created successfully', status: 200})
         } catch (e) {
-            handlingError(res, e);
+            handlingError(res, e.message);
         }
     },
 }

@@ -23,10 +23,10 @@ module.exports = {
           res.send({ data: r, status: 200, message: "Success add baby" });
         })
         .catch((e) => {
-          handlingError(res, e);
+          handlingError(res, e.message);
         });
     } catch (e) {
-      handlingError(res, e);
+      handlingError(res, e.message);
     }
   },
   getBabyList: async (req, res) => {
@@ -56,7 +56,7 @@ module.exports = {
           message: r.length === 0 ? "No babies data" : "Success get baby data",
         });
       })
-      .catch((e) => handlingError(res, e));
+      .catch((e) => handlingError(res, e.message));
   },
   update: async (req, res) => {
     const { id } = req.params;
@@ -83,11 +83,11 @@ module.exports = {
             });
           })
           .catch((e) => {
-            handlingError(res, e);
+            handlingError(res, e.message);
           });
       }
     } catch (e) {
-      handlingError(res, e);
+      handlingError(res, e.message);
     }
   },
   loginBabyBox: async (req, res) => {

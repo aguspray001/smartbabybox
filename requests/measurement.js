@@ -29,7 +29,7 @@ module.exports = {
           message: "Success add measurement of baby",
         })
       )
-      .catch((e) => handlingError(res, e));
+      .catch((e) => handlingError(res, e.message));
   },
 
   paging: async (req, res) => {
@@ -66,7 +66,7 @@ module.exports = {
         });
       })
       .catch((e) => {
-        handlingError(res, e);
+        handlingError(res, e.message);
       });
   },
   getById: async (req, res) => {
@@ -107,7 +107,7 @@ module.exports = {
         });
       })
       .catch((e) => {
-        handlingError(res, e);
+        handlingError(res, e.message);
       });
   },
   downloadExcel: async (req, res) => {
@@ -186,7 +186,7 @@ module.exports = {
         });
       })
       .catch((e) => {
-        handlingError(res, e);
+        handlingError(res, e.message);
       });
   }
 };
